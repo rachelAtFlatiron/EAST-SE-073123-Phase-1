@@ -58,25 +58,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const pPrice = document.createElement('p')
             //* Add an input and set it to cardData inventory
             const pInventory = document.createElement('input')
-            const img = document.createElement('img')
             const btn = document.createElement('button')
+            const img = document.createElement('img')
     
             h3.textContent = cardData.title
             pAuthor.textContent = cardData.author
             pPrice.textContent = `$${cardData.price}`
             pInventory.type = 'number'
-            pInventory.value = cardData.inventory
             btn.textContent = 'Delete'
-    
+            pInventory.value = cardData.inventory
+            
             img.src = cardData.imageUrl
-            li.className = 'list-li'
+            li.className = 'card'
     
             //Event Listeners 
             //* Pass Delete handler
             btn.addEventListener('click',(e)=> handleDelete(cardData.id, e.target.parentElement))
             //* Add eventListener that will trigger an update when the value is changed
             pInventory.addEventListener('change', (e) => handleUpdateInventory(e.target.value, cardData.id))
-            li.append(h3,pAuthor,pPrice, pInventory, img, btn)
+            li.append(h3, pAuthor,pPrice, img, pInventory, btn )
             document.querySelector('#book-list').append(li)
         }
     
