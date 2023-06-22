@@ -1,0 +1,179 @@
+:root {
+    --green: rgb(1, 129, 54);
+    --black: rgb(33, 41, 34);
+    --maroon: rgb(73, 53, 57);
+    --white: rgb(242, 244, 243);
+    --serif-font: 'Nanum Myeongjo', serif;
+    --deco-font: 'Josefin Slab', serif;
+    --script-font: 'Norican', cursive;
+    --box-raised: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    --box-pressed: rgba(0, 0, 0, 0.25) 0px 2px 1px 0px;
+}
+
+html {
+    background-image: url('/assets/books.png')
+}
+body {
+    max-width: 1000px;
+    margin: 10px;
+    padding: 30px;
+    font-family: var(--serif-font);
+    background-color: var(--white);
+    color: var(--green);
+    font-weight:900;
+}
+
+button {
+    background-color: white;
+    border: none;
+    font-family: var(--serif-font);
+    transition: all .2s;
+    color: var(--green);
+    border: solid 1px var(--green);
+    padding: 4px 10px;
+
+}
+button:hover {
+    cursor:pointer;
+    background-color: var(--green);
+    color: var(--white);
+    transition: all .1s;
+}
+
+input:focus-visible {
+    outline-color: var(--green);
+}
+h1 {
+    font-style: italic;
+    font-family: var(--script-font);
+    border-bottom: solid 1px var(--green);
+}
+
+.list {
+    max-width: 1000px;
+}
+
+#form-wrapper {
+    margin: 0 auto;
+   
+}
+
+
+#book-form {
+    max-width: 500px;
+    min-width: 400px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    border: solid 1px var(--green);
+    padding: 30px;
+    margin: 60px auto;
+}
+
+#book-form input[type="submit"]{
+    padding: 10px;
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+    font-family: var(--script-font);
+    font-weight: bold;
+    /* border: solid 1px var(--green); */
+    border: none;
+    font-size: 16px;
+    color: var(--green);
+    background-color: white;
+    box-shadow: var(--box-raised);
+}
+#book-form input[type="submit"]:hover {
+    /* background-color: var(--green);
+    color: var(--white); */
+    box-shadow: var(--box-pressed);
+    transform: translateY(4px);
+    transition: all .1s;
+}
+
+#book-form input {
+    margin-bottom: 15px;
+    background-color: white;
+    padding: 10px;
+    color: var(--green);
+    border: none;
+    border-bottom: solid 1px var(--green);
+    font-family: monospace;
+}
+
+#book-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+ul {
+    list-style: none;
+}
+.list-li {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.card {
+    /* border: solid 1px var(--maroon); */
+    border-radius: 23px;
+    padding: 5% 5% 5%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+}
+
+.card:hover {
+    transform: translateY(4px);
+    transition: all .1s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 1px 0px
+}
+
+.card img {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 60%;
+}
+.card h3 {
+    height: 45px;
+    font-family: var(--deco-font);
+    color: var(--green);
+}
+.card p {
+    color: var(--green);
+    font-family: var(--serif-font);
+    font-size: 12px;
+}
+.card button {
+    float: right;
+    
+}
+.card input {
+    border: solid 1px var(--green);
+    font-family: var(--serif-font);
+    color: var(--green);
+    width: 100px;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+footer {
+    border-top: solid 1px var(--green);
+    padding-top: 30px;
+    margin-top: 40px;
+    font-family: var(--script-font);
+    font-size: 14px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+    background-color: white;
+    color: var(--green);
+
+   opacity: 1;
+
+}
