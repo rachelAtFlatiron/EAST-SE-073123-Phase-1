@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     // Invoking functions    
-        fetchResource('http://localhost:3000/stores/1')
+        fetchResource('http://localhost:3000/stores/2')
         .then(store => {
             renderHeader(store)
             renderFooter(store)
