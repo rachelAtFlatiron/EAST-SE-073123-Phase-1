@@ -37,7 +37,7 @@
           "content": "Good book, but not great for new coders"
         }
       ],
-      "inventory": "16",
+      "inventory": "24",
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg"
     },
     {
@@ -51,7 +51,7 @@
           "content": "good way to learn JQuery"
         }
       ],
-      "inventory": 2,
+      "inventory": "5",
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/31SRWF+LkKL._SX398_BO1,204,203,200_.jpg"
     },
     {
@@ -87,7 +87,7 @@
           "content": "It really is the Definitive guide"
         }
       ],
-      "inventory": "3",
+      "inventory": "4",
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/51wijnc-Y8L._SX379_BO1,204,203,200_.jpg"
     },
     {
