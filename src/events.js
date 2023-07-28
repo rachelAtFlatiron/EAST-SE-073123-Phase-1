@@ -1,32 +1,38 @@
-/* ~~~~~~~~~~~~~~~ EVENT HANDLERS ~~~~~~~~~~~~~~~  */
-
-// post with form
-function handleForm(e){
-    e.preventDefault()
-    const book = {
-        title: e.target.title.value,
-        author:e.target.author.value,
-        price: e.target.price.value,
-        imageUrl: e.target.imageUrl.value,
-        inventory:e.target.inventory.value,
-        reviews:[]
-    }
-    createResource(book_url, book)
-    .then(renderBookCard)
-    .catch(e => console.error(e))
-
+/*  on click helper function: toggles collapsed class on form */
+function toggleBookForm() {
+	const bookFormHidden = bookForm.classList.toggle("collapsed");
+	if (bookFormHidden) {
+		toggleBookFormButton.textContent = "New Book";
+	} else {
+		toggleBookFormButton.textContent = "Hide Book Form";
+	}
 }
 
-// patch inventory number with form
-function handleUpdateInventory(inventoryNum,id){
-    updateResource({inventory: inventoryNum}, `${book_url}${id}`)
-    .catch(e => console.error(e))
+/* helper function to hide store form by updating classes and setting global vars */
+function hideStoreForm() {
+	document.querySelector("#store-form").classList.add("collapsed"); //adds class
+	storeFormVisible = false; //sets variable to save visibility of form
+	storeEditMode = false; //resets form to be for creating store
+	storeForm.reset(); //clears all fields
+	toggleStoreFormButton.textContent = "New Store"; //updates button text to align with creating store
 }
 
-// delete book with button
-function handleDelete(id, target){
-    deleteResource(`${book_url}${id}`)
-    .then(() => target.remove())
-    // update the dom pessimistically
-    .catch(e => console.error(e))
+/* helper function to show store form by updating classes and setting global vars */
+function showStoreForm() {
+	document.querySelector("#store-form").classList.remove("collapsed"); //removes class
+	storeFormVisible = true; //sets variable to save visibility of form
+	toggleStoreFormButton.textContent = "Hide Store Form";
+	//ternary to determine text of submit button based on edit or create mode
+	storeForm.querySelector('[type="submit"]').value = storeEditMode
+		? "Save Store"
+		: "Add Store";
+}
+
+/* toggles between showing and hiding form */
+function toggleStoreForm() {
+	if (storeFormVisible) {
+		hideStoreForm();
+	} else {
+		showStoreForm();
+	}
 }

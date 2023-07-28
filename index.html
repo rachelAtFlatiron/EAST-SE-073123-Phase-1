@@ -1,68 +1,118 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,300;0,400;1,600&family=La+Belle+Aurore&family=Nanum+Myeongjo:wght@400;700&family=Norican&display=swap" rel="stylesheet"> <link rel="stylesheet" href="my-style.css">
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="src/requests.js"></script>
-    <script defer src="src/rendering.js"></script>
-    <script defer src="src/events.js"></script>
-    <script defer src="src/external_api.js"></script>
-    <script defer src="src/index.js"></script>
-    
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--GOOGLE FONTS-->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,300;0,400;1,600&family=La+Belle+Aurore&family=Nanum+Myeongjo:wght@400;700&family=Norican&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="my-style.css" />
+		<!--STYLE SHEET-->
+		<link rel="stylesheet" href="style.css" />
+		<!--JAVASCRIPT-->
+		<script defer src="src/render.js"></script>
+		<script defer src="src/request_helpers.js"></script>
+		<script defer src="src/events.js"></script>
+		<script defer src="src/testing.js"></script>
+		<script defer src="src/index.js"></script>
 
-  <title>JS Data Types and Variables</title>
-  </head>
-  <body>
-    <div class="list App light" id="header">
-      <header>
-        <div>
-          <h1></h1>
-          <div id="banner"></div>
-        </div>
-      </header>
-      <main>
-        <div id="form-wrapper">
-          <form id="book-form" class="form">
-          
-            <!-- <label for="title">Title:</label> -->
-            <input type="text" id="form-title" name="title" placeholder="Title...">
-  
-            <!-- <label for="author">Author:</label> -->
-            <input type="text" id="form-author" name="author" placeholder="Author...">
-          
-            <!-- <label for="price">Price:</label> -->
-            <input type="number" id="form-price" name="price" placeholder="Price...">
-          
-            <!-- <label for="imageUrl">Image url:</label> -->
-            <input type="text" id="form-imageUrl" name="imageUrl" placeholder="Image...">
-          
-            <!-- <label for="inventory">Inventory:</label> -->
-            <input type="text" id="inventory" name="inventory" placeholder="Inventory...">
-              
-            <input type="submit" value="Add Book"/>
-          </form>
-      </div>
-        <div class="list">
-          <ul id="book-list" class="cards">
-          </ul>
-        </div>
-        
-      </main>
-      <footer>
-        <div></div>
-        <div></div>
-        <div></div>
-      </footer>
-    </div>
-  </body>
-  
+		<title>JS DOM Events</title>
+	</head>
+	<body class="">
+		<div class="list App light" id="header">
+      
+			<header>
+				<h1 id="store-name"></h1>
+				<select id="store-selector">
+					<option value="" disabled selected>Select your store</option>
+				</select>
+        <button id="edit-store">Edit Store</button>
+				<div id="banner"></div>
+			</header>
+			
+			<main>
+				<div id="form-wrapper">
+					<button id="toggle-store-form" style="margin: 0 auto; display: block">New Store</button>
+					<form id="store-form" class="collapsed">
+						<input
+							type="text"
+							id="form-name"
+							name="name"
+							placeholder="Name..."
+						/>
+						<input
+							type="text"
+							id="form-location"
+							name="location"
+							placeholder="Location..."
+						/>
+						<input
+							type="text"
+							id="form-number"
+							name="number"
+							placeholder="Phone number..."
+						/>
+						<input type="submit" value="Add Store" />
+					</form>
+				</div>
+				<div id="form-wrapper">
+					<button id="toggle-form" style="margin: 0 auto; display: block">New Book</button>
+					<form id="book-form" class="collapsed">
+						<!-- <label for="title">Title:</label> -->
+						<input
+							type="text"
+							id="form-title"
+							name="title"
+							placeholder="Title..."
+						/>
+						<!-- <label for="author">Author:</label> -->
+						<input
+							type="text"
+							id="form-author"
+							name="author"
+							placeholder="Author..."
+						/>
+						<!-- <label for="price">Price:</label> -->
+						<input
+							type="number"
+							step=0.01
+							id="form-price"
+							name="price"
+							placeholder="Price..."
+						/>
+						<!-- <label for="imageUrl">Image url:</label> -->
+						<input
+							type="text"
+							id="form-imageUrl"
+							name="imageUrl"
+							placeholder="Image..."
+						/>
+						<!-- <label for="inventory">Inventory:</label> -->
+						<input
+							type="number"
+							id="inventory"
+							name="inventory"
+							placeholder="Inventory..."
+						/>
+						<input type="submit" value="Add Book" />
+					</form>
+				</div>
+
+				<div class="list">
+					<ul id="book-list"></ul>
+				</div>
+			</main>
+
+			<footer>
+				<div id="store"></div>
+				<div id="number"></div>
+				<div id="address"></div>
+			</footer>
+
+		</div>
+	</body>
 </html>
