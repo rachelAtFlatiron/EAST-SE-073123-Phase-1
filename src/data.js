@@ -1,10 +1,14 @@
 const bookStore = {
+  //bookStore.location
   location: "Seattle",
+  //bookStore.address
   address:'333 st ne Seattle wa 99999',
+  //bookStore.number
   number: 9999999999,
   name: 'Easley\'s Technical Books',
   hours: 'Monday - Friday 9am - 6pm',
   inventory: [
+    //bookStore.inventory[1]
     {
       id: 1,
       title: 'Eloquent JavaScript: A Modern Introduction to Programming',

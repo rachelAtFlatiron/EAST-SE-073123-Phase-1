@@ -24,26 +24,28 @@ title: "02_dom_manipulation"
 
 #### Single Page Applications
 
-<div style="display: flex; flex-direction: row">
-  <div style="width: 40%">
+
     
 - JavaScript renders the content of the page dynamically
 - Avoids page refreshes
 - Page transitions are much faster
 
-    
-  </div>
-<div style="width: 60%">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Main_menu_of_Wikipedia.png" alt="Mapquest image" style="width: 100%" />
-  </div>
-</div>
 
 <aside class="notes">
+
 - renders based on user behaviors, information from servers <br />
 - click on a link - it directs you to a new page <br />
 - show in console how everything resets to prove refresh <br /> 
-**(type something in, see it disappear) (do NOT use network tab yet)
+**(type something in, see it disappear) (do NOT use network tab yet) <br />
+
+Steps to Manually Detect SPA
+1. Open developer tools / inspector
+2. Reload the page or navigate to it
+3. Notice the timeline/waterfall of the requests
+4. Click on a link or other interaction you have in concern
+5. If the timeline refreshes and causes a page reload then it's not an SPA
+6. If the timeline shows the first hits and additional hits after your interaction then you have an SPA.
+
 </aside>
 
 ---
@@ -56,12 +58,13 @@ title: "02_dom_manipulation"
 </p>
 
 <aside class="notes">
-- use JS to find piece of page to repaint <br />
+
+- use JS to find piece of page to repaint
+
 - QUESTION: what does document remind you of (html document delivered to browser) <br />
 - QUESTION: what does object remind you of (key value pairs, data type) <br />
 - Model: representation of something <br />
-- OBJECT THAT REPRESENTS YOUR DOCUMENT in javascript so we can add our <br />
-- represent content of web page in javascript via a model <br />
+- OBJECT THAT REPRESENTS YOUR WEB PAGE/HTML in javascript so we can access nodes and create new nodes <br />
 - can find, access, and update a specific part of the page
 </aside>
 
