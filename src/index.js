@@ -8,6 +8,9 @@ const bookForm = document.querySelector('#book-form')
  */
 
 //newBookBtn.addEventListener('click', (e) => console.log(e))
+function removeBook(li) {
+	li.remove()
+}
 
 function renderBook(book) {
 	const li = document.createElement("li");
@@ -28,13 +31,16 @@ function renderBook(book) {
 
 	//✅ 1a. attach eventListener
 	//✅ 1b. include callback function to remove card instance
+	
 	deleteBtn.addEventListener('click', (e) => {
-		li.remove()
+		//get the card off the page
+		removeBook(li)
 	})
+
+
 	//brand new deleteBtn and brand new li get created every time renderBook is executed
 	//see .forEach at bottom of page
 	//console.log(deleteBtn, li)
-	//console.log()
 
 	bookList.append(li);
 	li.append(titleNode);
@@ -76,13 +82,35 @@ bookForm.addEventListener('submit', (e) => {
 //✅ 3a. save the button in a variable
 //✅ 3b. add the event listener
 	//✅ 3c. hide/show the form
+	//YOU DO: add a className collapsed to bookForm
 	//✅ 3d. update the button text
+
+//newBookBtn -> "new book btn"
+//bookForm -> bookForm
+	//1. add event listener to the appropriate node
+	//2. put the event as first argument
+	//3. create callback to add className 'collapsed' to bookForm
+newBookBtn.addEventListener('click', (e) => {
+	console.log(e)
+	//if bookForm has class "collapsed", take it away
+	if(bookForm.classList.contains("collapsed")){
+		bookForm.classList.remove("collapsed")
+		newBookBtn.textContent = "Close New Book Form"
+	}
+	//if bookForm does not have class "collapsed", add it
+	else if(!bookForm.classList.contains("collapsed")) {
+		bookForm.classList.add("collapsed")
+		newBookBtn.textContent = "New Book"
+	}
+	//bookForm.classList.toggle("collapsed")
+})
+	
 
 
 /*
 *
 * 
-OLD BUISINESS
+OLD BUISNESS
 *
 *
 */
