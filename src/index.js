@@ -15,13 +15,32 @@ const bookForm = document.querySelector('#book-form'); //book form
 ///////////////////////////////
 //✅ 2. fetch request to get all books
 //✅ 2a. save the base url as a const (to reuse later)
+const url = 'http://localhost:3000'
+fetch(`${url}/books`)  //get info from designated URL      
+  .then(response => {
+    console.log(response)
+    return response.json()
+  })  //get data from response (response contains a lot of things) 
   //✅ 2b. render books from database instead of from data.js
+  .then(data => data.forEach(renderBook)) //console.log
+  .catch(err => console.log(err))
 
 
 //✅ 3. use db.json to get information about the store
+
 //✅ 3a. make a fetch request
+fetch(`${url}/stores/3`)
+  .then(res => res.json())
   //✅ 3b. use data to update DOM
-//✅ 3c. add a .catch for errors
+  .then(data => {
+    renderHeader(data) 
+    renderFooter(data)
+  })
+  //✅ 3c. add a .catch for errors
+  .catch(err => {
+    alert('something went wrong')
+  })
+
 
 /**
  * 
@@ -126,9 +145,9 @@ bookForm.addEventListener('submit', (e) => {
   renderBook(book); // display new book to DOM
 })
 
-renderHeader(bookStore)
-renderFooter(bookStore)
-bookStore.inventory.forEach(renderBook)
+// renderHeader(bookStore)
+// renderFooter(bookStore)
+// bookStore.inventory.forEach(renderBook)
 
 
 
