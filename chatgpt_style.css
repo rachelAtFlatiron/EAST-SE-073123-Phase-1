@@ -1,2 +1,145 @@
-/*✅ 4a. give ChatGPT the HTML */
-/*✅ 4b. tell ChatGPT to generate "snazzier" color scheme, etc. */
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+button,
+form,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Josefin Slab', serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+header {
+  background-color: #ff0000;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+#store-name {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 2.5rem;
+}
+
+#store-selector,
+#edit-store {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #ff0000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Form Styles */
+#form-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#toggle-store-form,
+#toggle-form {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 10px;
+  background-color: #ff0000;
+  color: #fff;
+  cursor: pointer;
+}
+
+form.collapsed {
+  display: none;
+}
+
+form {
+  margin-top: 10px;
+  text-align: center;
+}
+
+input[type='text'],
+input[type='number'] {
+  display: block;
+  margin: 10px auto;
+  padding: 5px;
+  width: 80%;
+}
+
+input[type='submit'] {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Book List Styles */
+#book-list {
+  list-style: none;
+  padding: 20px;
+}
+
+#book-list li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.book-image {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ff0000;
+  color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  header,
+  footer {
+    padding: 10px;
+  }
+
+  #store-selector,
+  #edit-store,
+  #toggle-store-form,
+  #toggle-form,
+  input[type='text'],
+  input[type='number'],
+  input[type='submit'] {
+    width: 100%;
+  }
+}

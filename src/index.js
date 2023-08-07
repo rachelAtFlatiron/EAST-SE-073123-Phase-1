@@ -52,9 +52,34 @@ storeForm.addEventListener("submit", (e) => {
 		location: e.target.location.value,
 	};
 	if (storeEditMode) {
-		//✅ 1. update new store in database
+		//✅ 1. update new store in database (PATCH)
 		//✅ 1a. create marker for current store in editStoreButton on click event
+
+		let storeDropdown = document.querySelector('#store-selector')
+		let id = storeDropdown.value 
+		console.log(id)
+
     	//✅ 1b. update the store in the DOM - pessimistic rendering - and persist store
+
+
+		/*
+			PATCH
+			1. get id of item to patch
+			2. get new info to include with patch
+			3. include id with fetch url
+			4. specify method is PATCH
+			5. .thens
+		*/
+		fetch(`${url}/stores/${id}`, {
+			method: 'PATCH',
+			headers: {'content-type': 'application/json'},
+			body: JSON.stringify(store)
+		})
+		.then(res => res.json())
+		.then(data => { //data is updated store
+			renderHeader(data)
+			renderFooter(data)
+		})
 		
 
 	//✅ 1c. create new store and add to database
@@ -109,6 +134,6 @@ getJSON("http://localhost:3000/stores")
 	});
 getJSON("http://localhost:3000/books")
 	.then((books) => {
-		books.forEach(renderBook);
+		books.forEach(book => renderBook(book));
 	})
 	.catch(renderError);

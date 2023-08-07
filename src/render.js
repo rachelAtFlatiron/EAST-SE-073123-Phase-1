@@ -1,4 +1,5 @@
 /* renders one book object as card*/
+
 function renderBook(book) {
 	const li = document.createElement("li");
 	const titleNode = document.createElement("h3");
@@ -7,6 +8,7 @@ function renderBook(book) {
 	const imgNode = document.createElement("img");
 	const deleteBtn = document.createElement("button");
 	const pInventory = document.createElement("input");
+	const id = book.id
 
 	li.className = "card";
 	titleNode.textContent = book.title;
@@ -18,13 +20,43 @@ function renderBook(book) {
 
 	deleteBtn.textContent = "Delete";
 	deleteBtn.addEventListener("click", (e) => {
-
+		
 		//✅ 2a. update the server with a delete request
 
-	});
+		/*
+			1. get id of item you are working with
+			2. attach id to url
+			3. specify method is DELETE
+			4. .thens
+		*/
+		fetch(`${url}/books/${id}`, {
+			method: 'DELETE'
+		})
+		.then(res => res.json())
+		//nothing in parenthesis because DELETE doesn't send back anything
+		.then(() => {
+			//remove the card
+			alert('confirm delete')
+			li.remove() //pessimistic
+		})
+		//li.remove() //optimistic
 
+	});
+	
 	//✅ 3. update the inventory
 	//✅ 3a. add an onChange event handler
+	pInventory.addEventListener('change', (e) => {
+		let newInventory = e.target.value //don't need e.target['inventory'].value because the event listener is directly on the input 
+
+		fetch(`${url}/books/${id}`, {
+			method: 'PATCH',
+			headers: {'content-type': 'application/json'},
+			body: JSON.stringify({inventory: newInventory})
+		})
+		.then(res => res.json())
+		.then(data => console.log(data))
+
+	})
 
 	//✅ 4. generate CSS using chatGPT in chatgpt_style.css
 

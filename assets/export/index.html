@@ -231,7 +231,7 @@ function addLike(comment) {
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({likes: comment.likes + 1})
+    body: JSON.stringify({likes: comment.likes += 1})
   })
     .then(res => res.json())
     .then(comment => {
@@ -250,6 +250,9 @@ function likeButtonTextFor(comment) {
 - due to (stale) closures, buttons only work once <br />
 - See MDN: "closure is combo of a fxn bundled (enclosed) with references to is surrounding state (lexical environment) <br />
 - closure gives inner fxn access to outer scope <br />
+- when dealing with async, don't know exactly when fxns are called but they will be called later <br />
+- addLike cb is referencing the comment variable in function scope of renderComment -> the closure surrounding comment allows addLike to run with same comment object -> that object's likes is always at 22 and we never update it to the incremented number <br />
+- comment object is now stale, it has not been updated; comment.likes + 1 does not set comment.likes (do comment.likes += 1, this will update in database and in closure)
 </aside>
             </section>
     
@@ -262,6 +265,25 @@ function likeButtonTextFor(comment) {
             <h2>Fixing Closure Issues</h2>
 <img src="./closure-fix.png" />
 <aside class="notes">
+- when updating, update in db.json AND update in browser <br />
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h2>Let’s Code 🐒</h2>
+<h3>1. updating a store using the store form</h3>
+<h3>2. delete a book</h3>
+<h3>3. update the inventory for a book</h3>
+<aside class="notes">
+- new: <br />
+- editStoreBtn (button), storeEditMode (toggles to say whether store form is for new store or edit store) <br />
+- populateStoreEditForm(store), fillIn(form, data): helper functions to fill in form <br />
+- events.js: toggleStoreForm, hideStoreForm, showStoreForm: contains additional logic to update global variables determining new or edit state
 </aside>
             </section>
     
