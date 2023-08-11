@@ -69,7 +69,39 @@ apiSearchForm.addEventListener("submit", (e) => {
 //✅ 2. create keys.js file to hold API key for Google books
 
 //✅ 3b. make fetch request to google books
+googleSearchForm.addEventListener('submit', (e) => {
+	e.preventDefault()
+	let query = encodeURI(e.target.search.value)
 
-//✅ 3c. display data on page for one book
+	fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`)
+	.then(res => res.json())
+	.then(data => {
+		//✅ 3c. display data on page for one book
+		// let book = data.items[0]
 
-//✅ 3d. iterate over all items and display data on page
+		// let title = document.createElement('h1')
+		// let author = document.createElement('p')
+		// let cover = document.createElement('img')
+		// console.log(data)
+		// title.textContent = book.volumeInfo.title 
+		// author.textContent = book.volumeInfo.authors[0]
+		// cover.src = book.volumeInfo.imageLinks.thumbnail
+
+		// resultsDiv.append(title, author, cover)
+
+		//✅ 3d. iterate over all items and display data on page
+		data.items.forEach(book => {
+			let title = document.createElement('h1')
+			let author = document.createElement('p')
+			let cover = document.createElement('img')
+			title.textContent = book.volumeInfo.title 
+			author.textContent = book.volumeInfo.authors[0]
+			cover.src = book.volumeInfo.imageLinks.thumbnail
+	
+			resultsDiv.append(title, author, cover)
+		})
+
+	})
+
+})
+
